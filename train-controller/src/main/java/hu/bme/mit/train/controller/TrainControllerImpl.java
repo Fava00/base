@@ -11,6 +11,7 @@ public class TrainControllerImpl implements TrainController {
 	private int speedLimit = 0;
 	boolean weatherBool=false;
 
+
 	@Override
 	public void followSpeed() {
 		if (referenceSpeed < 0) {
@@ -69,5 +70,7 @@ public class TrainControllerImpl implements TrainController {
 	public int getSpeedLimit(){
 		return speedLimit;
 	}
+
+	
 }
 

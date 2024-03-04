@@ -8,10 +8,10 @@ import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.system.TrainSystem;
-//import hu.bme.mit.train.controller;
+import java.time.LocalDate;
+import com.google.common.collect.*;
 
 public class TrainSystemTest {
-
 	TrainController controller;
 	TrainSensor sensor;
 	TrainUser user;
@@ -22,8 +22,8 @@ public class TrainSystemTest {
 		controller = system.getController();
 		sensor = system.getSensor();
 		user = system.getUser();
-
 		sensor.overrideSpeedLimit(50);
+		LocalDate curTime= LocalDate.now();
 	}
 	
 	@Test
@@ -57,6 +57,32 @@ public class TrainSystemTest {
 		controller.setSpeedLimit(30);
 		Assert.assertEquals(21, controller.getSpeedLimit());
 	}
+
+	@Test
+	public void TestTachograph(){
+		sensor.overrideSpeedLimit(10);
+		user.overrideJoystickPosition(5);
+
+		controller.followSpeed();
+
+		user.overrideJoystickPosition(5);
+
+		sensor.tachograph();
+
+
+		sensor.overrideSpeedLimit(10);
+		user.overrideJoystickPosition(6);
+
+		controller.followSpeed();
+
+		user.overrideJoystickPosition(7);
+
+		sensor.tachograph();
+
+		Assert.assertEquals(sensor.getTachograph().size(),2);
+	}
+	
+
 
 	
 }
