@@ -10,4 +10,10 @@ public interface TrainController {
 
 	void setJoystickPosition(int joystickPosition);
 
+	int getSpeedLimit();
+
+	boolean getWeatherBool();
+
+	void setBadWeather(boolean bad);
+
 }
