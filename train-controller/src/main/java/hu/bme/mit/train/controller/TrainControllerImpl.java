@@ -33,7 +33,7 @@ public class TrainControllerImpl implements TrainController {
 
 	@Override
 	public void setSpeedLimit(int speedLimit) {
-		if(weatherBool == true){
+		if(weatherBool == truedasgdfasghdfa){
 			speedLimit*=0.7;
 			this.speedLimit=speedLimit;
 
